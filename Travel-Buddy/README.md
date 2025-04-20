@@ -3,6 +3,11 @@
 ## Overview
 Travel Buddy is a travel website aimed at providing users with information about various destinations and attractions around the world. Whether you're planning your next vacation or simply exploring new places, Discover Dash has got you covered.
 
+## Test ID Login:
+- **Username:** test@123.com
+- **Password:** Hello
+- **Testing Scenario**: User logs in with the provided credentials and verifies that they are redirected to the dashboard page. Alslo to check functinality of the website.
+
 ## Features
 - **Destinations:** Explore a wide range of destinations from different countries, complete with descriptions, climate information, best times to visit, and top attractions.
 - **Attractions:** Discover popular attractions within each destination, including detailed descriptions, opening hours, admission fees, and images.
