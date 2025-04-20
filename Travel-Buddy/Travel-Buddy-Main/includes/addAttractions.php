@@ -1,7 +1,8 @@
 <?php
-// Check if the form for adding new attractions is submitted
+// Check if the form for adding new attractions is submitted via POST method
 if (isset ($_POST['newAttractions'])) {
-    // Retrieve data from the form
+    
+    //  Retrieve form data from POST request
     $DestinationID = $_POST['DestinationID'];
     $Name = $_POST['Name'];
     $Description = $_POST['Description'];
@@ -10,25 +11,29 @@ if (isset ($_POST['newAttractions'])) {
     $OpeningHours = $_POST['OpeningHours'];
     $ImageURL = $_POST['ImageURL'];
 
-    // Connection string
+    //  Include the database connection script
     include ('./connect.php');
 
-    // SQL query to insert new attraction into the database
-    $query = "INSERT INTO attractions (DestinationID, Name, Description, Location, AdmissionFee, OpeningHours, ImageURL) VALUES ('$DestinationID', '$Name', '$Description', '$Location', '$AdmissionFee', '$OpeningHours', '$ImageURL')";
+    //  Prepare SQL query to insert the new attraction into the 'attractions' table
+    $query = "INSERT INTO attractions 
+              (DestinationID, Name, Description, Location, AdmissionFee, OpeningHours, ImageURL) 
+              VALUES 
+              ('$DestinationID', '$Name', '$Description', '$Location', '$AdmissionFee', '$OpeningHours', '$ImageURL')";
 
-    // Execute the query
+    // Execute the query using the database connection
     $attraction = mysqli_query($connect, $query);
 
-    // Check if the query was successful
+    //  Check if insertion was successful
     if ($attraction) {
-        // Redirect to the destination details page with the DestinationID in the URL
+        // If successful, redirect to the destination details page with the given DestinationID
         header("Location: ../admin/destinationDetails.php?DestinationID=" . $DestinationID);
     } else {
-        // Display error message if the query fails
-        echo "Failed" . mysqli_error($connect);
+        // If query fails, display an error message with MySQL error info
+        echo "Failed: " . mysqli_error($connect);
     }
+
 } else {
-    // Display error message if the form submission is unexpected
+    // If the script is accessed without submitting the form, show an error message
     echo "You should not be here!";
 }
 ?>

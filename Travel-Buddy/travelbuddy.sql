@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.1.5
 -- https://www.phpmyadmin.net/
 
 
@@ -9,7 +9,7 @@ SET time_zone = "+00:00";
 
 
 --
--- Database: `discoverdash`
+-- Database: `travelwise`
 --
 
 -- --------------------------------------------------------
@@ -99,7 +99,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first`, `last`, `email`, `password`) VALUES
-(1, 'Test', 'Lname', 'test@123.com', '8b1a9953c4611296a827abf8c47804d7');
+(1, 'Test', 'Lname', 'test@123.com', 'Test');
 
 --
 -- Indexes for dumped tables

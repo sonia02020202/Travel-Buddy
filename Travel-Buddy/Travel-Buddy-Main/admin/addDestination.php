@@ -1,7 +1,8 @@
 <?php
 // Check if the form for adding new destinations is submitted
 if (isset($_POST['newDestination'])) {
-    // Retrieve data from the form
+    
+    //  Retrieve input values from the submitted form
     $City = $_POST['City'];
     $Country = $_POST['Country'];
     $Description = $_POST['Description'];
@@ -9,25 +10,27 @@ if (isset($_POST['newDestination'])) {
     $BestTimeToVisit = $_POST['BestTimeToVisit'];
     $ImageURL = $_POST['ImageURL'];
 
-    // Connection string
+    //  Include database connection script
     include('../includes/connect.php');
 
-    // SQL query to insert new destination into the database
-    $query = "INSERT INTO destination (City, Country, Description, Climate, BestTimeToVisit, ImageURL) VALUES ('$City', '$Country', '$Description', '$Climate', '$BestTimeToVisit', '$ImageURL')";
+    // Prepare SQL query to insert the form data into the 'destination' table
+    $query = "INSERT INTO destination (City, Country, Description, Climate, BestTimeToVisit, ImageURL) 
+              VALUES ('$City', '$Country', '$Description', '$Climate', '$BestTimeToVisit', '$ImageURL')";
 
-    // Execute the query
+    //  Execute the query and insert the destination data
     $destination = mysqli_query($connect, $query);
 
-    // Check if the query was successful
+    // Check if the insert operation was successful
     if ($destination) {
-        // Redirect to the destination details page with the DestinationID in the URL
+        // If successful, redirect the user to the destination details page
         header("Location: ../destination.php");
     } else {
-        // Display error message if the query fails
+        // If an error occurs, display the error message
         echo "Failed" . mysqli_error($connect);
     }
+
 } else {
-    // Display error message if the form submission is unexpected
+    // If the form was not submitted properly, display a warning message
     echo "You should not be here!";
 }
 ?>
